@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "504615430270",
+    "firebase_url": "https://fstore-4757c.firebaseio.com",
+    "project_id": "fstore-4757c",
+    "storage_bucket": "fstore-4757c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504615430270:android:d3e291b5feb41eda84902f",
+        "android_client_info": {
+          "package_name": "com.element8.learning_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504615430270-60efpvp9e0cqtcneghqlmpbkuqbjscvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg2wWsEBSzT0vWGXLmbwDPWK_6ZKGj-ic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504615430270-60efpvp9e0cqtcneghqlmpbkuqbjscvc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504615430270:android:8cd36501db3906df84902f",
+        "android_client_info": {
+          "package_name": "com.progbiz.barter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504615430270-60efpvp9e0cqtcneghqlmpbkuqbjscvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg2wWsEBSzT0vWGXLmbwDPWK_6ZKGj-ic"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504615430270-60efpvp9e0cqtcneghqlmpbkuqbjscvc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
