@@ -35,9 +35,9 @@ class _MainHomeHolderState extends State<MainHomeHolder> {
       case 0:
         return HomeScreen();
       case 1:
-        return EmptySreen();
+        return EmptyScreen();
       case 2:
-        return EmptySreen();
+        return EmptyScreen();
       case 3:
         return CartScreen();
       case 4:

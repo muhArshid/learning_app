@@ -219,8 +219,8 @@ class CourseCard extends StatelessWidget {
   }
 }
 
-class EmptySreen extends StatelessWidget {
-  const EmptySreen({Key? key}) : super(key: key);
+class EmptyScreen extends StatelessWidget {
+  const EmptyScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

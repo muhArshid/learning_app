@@ -4,6 +4,7 @@ class CartItemModel {
   static const NAME = "name";
   static const QUANTITY = "quantity";
   static const COST = "cost";
+  static const DIS = "dis";
   static const PRICE = "price";
   static const PRODUCT_ID = "productId";
 
@@ -14,6 +15,7 @@ class CartItemModel {
   String? cost;
   String? productId;
   String? price;
+  String? dis;
 
   CartItemModel(
       {this.productId,
@@ -21,7 +23,8 @@ class CartItemModel {
       this.image,
       this.name,
       this.quantity,
-      this.cost});
+      this.cost,
+      this.dis});
 
   CartItemModel.fromMap(Map<String, dynamic> data) {
     id = data[ID];
@@ -31,6 +34,7 @@ class CartItemModel {
     cost = data[COST];
     productId = data[PRODUCT_ID];
     price = data[PRICE];
+    dis = data[DIS];
   }
 
   Map toJson() => {
@@ -40,6 +44,7 @@ class CartItemModel {
         NAME: name,
         QUANTITY: quantity,
         COST: price! * quantity!.toInt(),
-        PRICE: price
+        PRICE: price,
+        DIS: dis
       };
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/Models/cart_item_res.dart';
 import 'package:learning_app/Models/course_res.dart';
@@ -53,19 +54,23 @@ class CartCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'name',
-                    style: AppFontMain(
-                      color: AppColorCode.primaryTextHalf,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w700,
+                  Container(
+                    width: 80.w,
+                    height: 20.h,
+                    child: HtmlWidget(
+                      cartItem!.name!,
+                      textStyle: AppFontMain(
+                        color: AppColorCode.secondaryText,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                   SizedBox(
                     width: 2.h,
                   ),
                   Text(
-                    'name color: AppColorCode.primaryTextHalf',
+                    cartItem!.dis!,
                     style: AppFontMain(
                       color: AppColorCode.secondaryText,
                       fontSize: 18,

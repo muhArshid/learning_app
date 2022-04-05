@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:learning_app/Views/Screens/Auth/login.dart';
 import 'package:learning_app/Views/Screens/Auth/register.dart';
+import 'package:learning_app/Views/Screens/Home/main_home_holder.dart';
 import 'package:learning_app/Views/widgets/button_icons_widgets.dart';
 import 'package:learning_app/utils/AppColorCode.dart';
 import 'package:learning_app/utils/AppFontOswald.dart';
@@ -20,6 +21,11 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   @override
   void initState() {
+    if (auth.currentUser != null) {
+      Get.offAll(MainHomeHolder(
+        currentIndex: 0,
+      ));
+    }
     // TODO: implement initState
     super.initState();
   }

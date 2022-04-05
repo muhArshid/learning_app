@@ -8,6 +8,7 @@ import 'package:learning_app/utils/AppFontOswald.dart';
 import 'package:learning_app/utils/controllers.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:sizer/sizer.dart';
+import 'package:email_auth/email_auth.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 
 class ForgetScreen extends StatefulWidget {
@@ -18,6 +19,7 @@ class ForgetScreen extends StatefulWidget {
 }
 
 class _ForgetScreenState extends State<ForgetScreen> {
+  EmailAuth emailAuth = new EmailAuth(sessionName: "Sample session");
   final _formEmailKey = GlobalKey<FormState>();
   final _formpasswordKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
@@ -25,8 +27,6 @@ class _ForgetScreenState extends State<ForgetScreen> {
   bool emailtext = true;
   bool passwordtext = false;
   bool otpMode = false;
-
-  OtpFieldController otpController = OtpFieldController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,6 @@ class _ForgetScreenState extends State<ForgetScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(height: 5.h),
-                     
                       const SizedBox(height: 34),
                       Text(
                         'Forgot Password',
@@ -121,14 +120,15 @@ class _ForgetScreenState extends State<ForgetScreen> {
                           width: size.width * 0.60,
                           buttonColor: AppColorCode.brandColor,
                           onTap: () async {
-                            // Get.to(() => HomeScreen());
-                            //   if (_formKey.currentState!.validate()) {
-                            setState(() {
-                              emailtext = false;
-                              otpMode = true;
-                            });
-
-                            // }
+                            if (_formEmailKey.currentState!.validate()) {
+                              var status = await userController.sendOtp();
+                              if (status) {
+                                setState(() {
+                                  emailtext = false;
+                                  otpMode = true;
+                                });
+                              }
+                            }
                           }),
                       const SizedBox(height: 30),
                     ]),
@@ -262,7 +262,7 @@ class _ForgetScreenState extends State<ForgetScreen> {
                   SizedBox(height: 10.h),
                   Center(
                     child: OTPTextField(
-                        controller: otpController,
+                        controller: userController.otpController,
                         length: 4,
                         width: MediaQuery.of(context).size.width,
                         textFieldAlignment: MainAxisAlignment.spaceAround,
@@ -307,12 +307,13 @@ class _ForgetScreenState extends State<ForgetScreen> {
                       width: size.width * 0.60,
                       buttonColor: AppColorCode.brandColor,
                       onTap: () async {
-                        // Get.to(() => HomeScreen());
-                        //   if (_formKey.currentState!.validate()) {
-                        setState(() {
-                          passwordtext = true;
-                          otpMode = false;
-                        });
+                        var flag = userController.verify();
+                        if (flag) {
+                          setState(() {
+                            passwordtext = true;
+                            otpMode = false;
+                          });
+                        }
 
                         // }
                       }),

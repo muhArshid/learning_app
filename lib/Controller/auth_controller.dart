@@ -7,6 +7,8 @@ import 'package:learning_app/Models/user_res.dart';
 import 'package:learning_app/Views/Screens/Auth/choose_auth.dart';
 import 'package:learning_app/Views/Screens/Home/main_home_holder.dart';
 import 'package:learning_app/utils/controllers.dart';
+import 'package:email_auth/email_auth.dart';
+import 'package:otp_text_field/otp_field.dart';
 
 class UserController extends GetxController {
   static UserController instance = Get.find();
@@ -18,6 +20,9 @@ class UserController extends GetxController {
   TextEditingController country = TextEditingController();
   TextEditingController password = TextEditingController();
   TextEditingController phone = TextEditingController();
+  TextEditingController otp = TextEditingController();
+  OtpFieldController otpController = OtpFieldController();
+
   Rx<UserModel> userModel = UserModel().obs;
   @override
   void onReady() {
@@ -184,6 +189,24 @@ class UserController extends GetxController {
     name.clear();
     email.clear();
     password.clear();
+  }
+
+  EmailAuth emailAuth = new EmailAuth(sessionName: "Sample session");
+  Future<bool> sendOtp() async {
+    bool result =
+        await emailAuth.sendOtp(recipientMail: email.value.text, otpLength: 5);
+    return result;
+  }
+
+  bool verify() {
+    print(emailAuth.validateOtp(
+        recipientMail: email.value.text, userOtp: otp.value.text));
+    return true;
+  }
+
+  Future<void> resetPassword(String passWord) async {
+    auth.currentUser!.updatePassword(passWord);
+    {}
   }
 
   _addUserToFirestore(String userId) {
